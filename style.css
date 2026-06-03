@@ -68,6 +68,8 @@ body {
 .nav-menu {
   display: flex;
   gap: 30px;
+  align-items: center;
+  flex-wrap: nowrap;
 }
 
 .nav-menu a {
@@ -75,6 +77,7 @@ body {
   color: #333;
   font-weight: 600;
   transition: 0.3s;
+  white-space: nowrap;
 }
 
 .nav-menu a:hover {
@@ -90,10 +93,20 @@ body {
 
 .contact-item {
   display: flex;
-  align-items: center;
-  gap: 6px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  line-height: 1.2;
 }
 
+.contact-icon {
+  font-size: 18px;
+}
+
+.contact-text {
+  font-size: 13px;
+  color: var(--muted);
+}
 /* HERO */
 .hero {
   background: linear-gradient(
@@ -1401,5 +1414,184 @@ width: 100% !important;
 
   .product-contact-strip-inner {
     grid-template-columns: 1fr;
+  }
+}
+
+/* ===============================
+   FLOATING HOTLINE BUTTON
+================================= */
+
+.hotline-floating {
+  position: fixed;
+  right: 25px;
+  bottom: 30px;
+  width: 70px;
+  height: 70px;
+  z-index: 9999;
+  text-decoration: none;
+}
+
+.hotline-icon {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: linear-gradient(
+    135deg,
+    var(--primary-dark),
+    var(--primary),
+    var(--primary-light)
+  );
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: white;
+  font-size: 30px;
+
+  box-shadow: 0 10px 25px rgba(139, 30, 30, 0.35);
+
+  animation: hotlineShake 1.8s infinite;
+}
+
+.hotline-pulse {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+
+  background: rgba(139, 30, 30, 0.35);
+
+  animation: pulseRing 2s infinite;
+}
+
+/* Ring Animation */
+@keyframes pulseRing {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+
+  70% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+
+/* Phone Shake */
+@keyframes hotlineShake {
+
+  0%,100% {
+    transform: rotate(0deg);
+  }
+
+  10% {
+    transform: rotate(-15deg);
+  }
+
+  20% {
+    transform: rotate(15deg);
+  }
+
+  30% {
+    transform: rotate(-10deg);
+  }
+
+  40% {
+    transform: rotate(10deg);
+  }
+
+  50% {
+    transform: rotate(0deg);
+  }
+}
+
+/* Mobile */
+@media (max-width:768px) {
+
+  .hotline-floating {
+    width: 60px;
+    height: 60px;
+    right: 18px;
+    bottom: 20px;
+  }
+
+  .hotline-icon,
+  .hotline-pulse {
+    width: 60px;
+    height: 60px;
+  }
+
+  .hotline-icon {
+    font-size: 26px;
+  }
+}
+
+/* ==================================
+   FLOATING ZALO BUTTON
+================================== */
+
+.zalo-floating {
+  position: fixed;
+  right: 25px;
+  bottom: 120px;
+  width: 70px;
+  height: 70px;
+  z-index: 9999;
+  text-decoration: none;
+}
+
+.zalo-icon {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: 0 10px 25px rgba(0,104,255,0.25);
+}
+
+.zalo-icon img {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+.zalo-pulse {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+
+  background: rgba(0,104,255,0.25);
+
+  animation: zaloPulse 2s infinite;
+}
+
+@keyframes zaloPulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+
+  70% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1.8);
+    opacity: 0;
   }
 }
