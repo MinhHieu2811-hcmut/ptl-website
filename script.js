@@ -20,3 +20,22 @@ if (contactForm) {
     contactForm.reset();
   });
 }
+
+const productSearchInput = document.getElementById("productSearchInput");
+
+if (productSearchInput) {
+  productSearchInput.addEventListener("input", function () {
+    const keyword = this.value.toLowerCase().trim();
+    const productCards = document.querySelectorAll(".product-item-card");
+
+    productCards.forEach(function (card) {
+      const productText = card.innerText.toLowerCase();
+
+      if (productText.includes(keyword)) {
+        card.classList.remove("product-hidden");
+      } else {
+        card.classList.add("product-hidden");
+      }
+    });
+  });
+}
